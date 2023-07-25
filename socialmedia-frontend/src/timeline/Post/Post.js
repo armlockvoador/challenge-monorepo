@@ -1,13 +1,17 @@
-import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { Avatar } from "@mui/material";
 import React from "react";
 import "./Post.css";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
-import TelegramIcon from "@mui/icons-material/Telegram";
-import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
+import ThumbDownOffAltIcon from '@mui/icons-material/ThumbDownOffAlt';
+import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 
-function Post({ user, postImage, likes, timestamp }) {
+
+function sayHello() {
+  alert('Hello!');
+}
+
+function Post({ user, postImage, likes, dislikes, viewsPost, comments }) {
+  
   return (
     <div className="post">
       <div className="post__header">
@@ -15,9 +19,11 @@ function Post({ user, postImage, likes, timestamp }) {
           <Avatar style={{ marginRight: "10px" }}>
             {user.charAt(0).toUpperCase()}
           </Avatar>{" "}
-          {user} • <span>{timestamp}</span>
+          {user}
         </div>
-        <MoreHorizIcon />
+        <button onClick={sayHello}>
+        Editar
+        </button>
       </div>
       <div className="post__image">
         <img src={postImage} alt="Post Image" />
@@ -26,15 +32,19 @@ function Post({ user, postImage, likes, timestamp }) {
         <div className="post__footerIcons">
           <div className="post__iconsMain">
             <FavoriteBorderIcon className="postIcon" />
-            <ChatBubbleOutlineIcon className="postIcon" />
-            <TelegramIcon className="postIcon" />
-          </div>
-          <div className="post__iconSave">
-            <BookmarkBorderIcon className="postIcon" />
+            <div className="liked">{likes}</div>
+            <ThumbDownOffAltIcon className="postIcon" />
+            <div className="disliked">{dislikes}</div>
+            <RemoveRedEyeIcon className="postIcon" />
+            <div className="viewsPost">{viewsPost}</div>
           </div>
         </div>
-        Liked by {likes} people.
       </div>
+      <div className="comments">
+        <h5>Comments</h5>
+        <p>{comments}</p>
+      </div>
+      
     </div>
   );
 }

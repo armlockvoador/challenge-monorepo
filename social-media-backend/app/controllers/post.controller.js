@@ -31,22 +31,10 @@ exports.create = (req, res) => {
       });
   };
 
-exports.findPostAndCommentsByUserId = (req, res) => {
-  if (!req.params.userId) {
-    res.status(400).send({
-      message: "Content can not be empty!"
-    });
-    return;
-  }
-
-  const id = req.params.userId;
+exports.findAllPostAndComments = (req, res) => {
 
   Post.findAll({
-    where: {
-      userId: {
-        [Op.eq]: id
-      }
-    }, include: [{
+    include: [{
       model: Comment
     }]
   }).then(data => {

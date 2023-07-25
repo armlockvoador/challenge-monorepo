@@ -3,7 +3,7 @@ module.exports = app => {
   
     var router = require("express").Router();
   
-    router.get("/:userId", post.findPostAndCommentsByUserId);
+    router.get("/findAll", post.findAllPostAndComments);
 
     router.post("/", post.create);
   

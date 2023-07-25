@@ -11,6 +11,16 @@
   margin-bottom: 10px;
 }
 
+.post__iconsMain {
+  display: flex;
+}
+
+.liked, .disliked, .viewsPost {
+  margin: auto;
+  font-size: 14px;
+}
+
+
 .post__headerAuthor {
   display: flex;
   flex-direction: row;
@@ -29,9 +39,6 @@
   border: 0.6px solid rgba(128, 128, 128, 0.516);
 }
 
-.post__footer {
-}
-
 .post__footerIcons {
   display: flex;
   flex-direction: row;
@@ -41,6 +48,8 @@
 
 .postIcon {
   padding: 7px;
+  display: flex;
+  
   font-size: 30px;
 }
 
