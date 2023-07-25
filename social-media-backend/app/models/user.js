@@ -1,5 +1,13 @@
-module.exports = (sequelize, Sequelize) => {
-    const User = sequelize.define("user", {
+const Sequelize = require('sequelize');
+const database =  require('../config/db.config');
+
+const User = database.define("user", {
+      id: {
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
+        allowNull: false,
+        primaryKey: true
+      },
       name: {
         type: Sequelize.STRING
       },
@@ -7,6 +15,5 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING
       }
     });
-  
-    return User;
-  };
+
+    module.exports = User;

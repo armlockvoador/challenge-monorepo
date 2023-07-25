@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-const db = require("./models");
+const db = require("./config/db.config");
 
 const app = express();
 
@@ -18,7 +18,7 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to leao application." });
 });
 
-db.sequelize.sync()
+db.sync()
   .then(() => {
     console.log("Synced db.");
   })
@@ -27,6 +27,8 @@ db.sequelize.sync()
   });
 
 require("./routes/user.routes")(app);
+require("./routes/comment.routes")(app);
+require("./routes/post.routes")(app);
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
